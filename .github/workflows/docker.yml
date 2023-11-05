@@ -1,14 +1,12 @@
-name: docker
+name: ci
 
 on:
   push:
     branches:
       - 'main'
-    paths:
-      - app/**
 
 jobs:
-  docker-build:
+  docker:
     runs-on: ubuntu-latest
     steps:
       -
@@ -25,9 +23,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        run: |
-          docker/build-push-action@v5
+        uses: docker/build-push-action@v5
         with:
-          context: ./app
+          registry: docker.io
+          image: danielmagevski/nginx
           push: true
-          tags: danielmagevski/app:latest
+          tags: danielmagevski/nginx:latest
