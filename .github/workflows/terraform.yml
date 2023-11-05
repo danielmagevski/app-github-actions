@@ -39,7 +39,7 @@ jobs:
          id: init
          run: terraform init
 
-       - name: Terraform format
+       - name: Terraform formats
          working-directory: terraform
          id: fmt
          run: terraform fmt -check
