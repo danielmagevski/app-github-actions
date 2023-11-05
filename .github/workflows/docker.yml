@@ -5,10 +5,10 @@ on:
     branches:
       - 'main'
     paths:
-        - app/**
+      - app/**
 
 jobs:
- docker-build:
+  docker-build:
     runs-on: ubuntu-latest
     steps:
       -
@@ -25,13 +25,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
+        working-directory: ./app
         run: |
           docker/build-push-action@v5
-        working-directory: ./app
-        with:
-          registry: docker.io
-          image: danielmagevski/app
-          push: true
-          tags: danielmagevski/app:latest
-          
- 
+            with:
+              registry: docker.io
+              image: danielmagevski/app
+              push: true
+              tags: danielmagevski/app:latest
