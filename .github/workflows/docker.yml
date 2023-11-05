@@ -28,9 +28,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           registry: docker.io
-          image: danielmagevski/nginx
+          image: danielmagevski/app
           push: true
-          tags: danielmagevski/nginx:latest
+          tags: danielmagevski/app:latest
   
   docker-deploy:
     needs: docker-build
@@ -47,7 +47,7 @@ jobs:
       -
         name:
         run: |
-          ssh -o StrictHostKeyChecking=no -i "${{ secrets.SSH_PRIVATE_KEY }}" ec2-user@${{ secrets.IP_HOST }} "ls -la"
+          ssh -o StrictHostKeyChecking=no -i "${{ secrets.SSH_PRIVATE_KEY }}" ec2-user@${{ secrets.IP_HOST }} "docker service rm $(docker service ls -q)"
       #-
        # name:
         #  run: |
