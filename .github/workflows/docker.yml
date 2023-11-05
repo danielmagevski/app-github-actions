@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - 'main'
-    patchs:
+    paths:
         - app/**
 
 jobs:
@@ -24,8 +24,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push 
-        uses: docker/build-push-action@v5
+        name: Build and push
+        run: |
+          docker/build-push-action@v5
         working-directory: ./app
         with:
           registry: docker.io
