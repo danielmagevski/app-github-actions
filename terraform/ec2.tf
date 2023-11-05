@@ -5,12 +5,6 @@ resource "aws_instance" "node1" {
   key_name                    = "test-lab"
   security_groups             = [aws_security_group.swarm.id]
   associate_public_ip_address = true
-
-  user_data = <<-EOF
-    #!/bin/bash
-    echo "Seu script aqui"
-    # Mais comandos
-    EOF
   tags = {
     Name = "ec2_instance_az-a"
   }
