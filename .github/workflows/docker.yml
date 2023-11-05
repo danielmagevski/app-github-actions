@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Setup SSH
-        uses: yakuhzi/setup-ssh-agent@v2
+        uses: webfactory/ssh-agent@v0.8.0
         with:
          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       -
