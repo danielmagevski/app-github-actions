@@ -41,13 +41,13 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.0
+        uses: yakuhzi/setup-ssh-agent@v2
         with:
          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       -
         name:
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@${{ secrets.IP_HOST }} "ls"
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@ ${{ secrets.IP_HOST }} "ls"
       #-
        # name:
         #  run: |
