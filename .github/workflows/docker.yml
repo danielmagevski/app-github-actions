@@ -47,7 +47,7 @@ jobs:
       -
         name:
         run: |
-          cat .ssh/
+          ls .ssh/
       #-
        # name:
         #  run: |
