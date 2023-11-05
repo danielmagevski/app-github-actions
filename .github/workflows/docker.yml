@@ -8,7 +8,7 @@ on:
       - app/**
 
 jobs:
-  docker:
+  docker-build:
     runs-on: ubuntu-latest
     steps:
       -
@@ -31,3 +31,20 @@ jobs:
           image: danielmagevski/nginx
           push: true
           tags: danielmagevski/nginx:latest
+  
+  docker-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Setup SSH
+        uses: webfactory/ssh-agent@v0.4
+        with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      -
+        name:
+          run: |
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@${{ secrets.IP_HOST }} "ls"
+      #-
+       # name:
+        #  run: |
+        #ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@${{ secrets.IP_HOST }} "docker stack deploy -c /path/to/your-stack-file.yml your-stack-name"
