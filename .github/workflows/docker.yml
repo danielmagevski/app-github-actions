@@ -42,7 +42,7 @@ jobs:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       -
         name:
-          run: |
+        run: |
           ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ec2-user@${{ secrets.IP_HOST }} "ls"
       #-
        # name:
