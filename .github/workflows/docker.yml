@@ -25,11 +25,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        #working-directory: ./app
         run: |
           docker/build-push-action@v5
-            with:
-              registry: docker.io
-              image: danielmagevski/app
-              push: true
-              tags: danielmagevski/app:latest
+        with:
+          context: ./app
+          push: true
+          tags: danielmagevski/app:latest
