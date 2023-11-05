@@ -33,6 +33,7 @@ jobs:
           tags: danielmagevski/nginx:latest
   
   docker-deploy:
+    needs: docker-build
     runs-on: ubuntu-latest
     steps:
       -
