@@ -6,11 +6,11 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "terraform-test-daniel-magevski"
-    key = "terraform.tfstate"
+    bucket  = "terraform-test-daniel-magevski"
+    key     = "terraform.tfstate"
     encrypt = true
-    region = "us-east-1"
-    
+    region  = "us-east-1"
+
   }
 }
 

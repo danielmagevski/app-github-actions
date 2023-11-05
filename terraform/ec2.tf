@@ -6,7 +6,7 @@ resource "aws_instance" "node1" {
   vpc_security_group_ids      = ["sg-055dd40d3baab49f9"]
   associate_public_ip_address = true
 
-user_data = <<-EOF
+  user_data = <<-EOF
     #!/bin/bash
     echo "Seu script aqui"
     # Mais comandos
